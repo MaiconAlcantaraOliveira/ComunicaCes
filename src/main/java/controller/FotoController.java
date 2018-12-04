@@ -1,5 +1,6 @@
 package controller;
 
+import facade.FotoFacade;
 import model.Foto;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
@@ -24,7 +25,7 @@ public class FotoController implements Serializable {
     private Foto current;
     private DataModel items = null;
     @EJB
-    private controller.FotoFacade ejbFacade;
+    private facade.FotoFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

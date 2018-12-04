@@ -3,12 +3,15 @@ package controller;
 import model.Usuario;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import facade.UsuarioFacade;
 
 import java.io.Serializable;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -16,6 +19,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import static model.Usuario_.nome;
+import static model.Usuario_.senha;
 
 @Named("usuarioController")
 @SessionScoped
@@ -24,13 +29,13 @@ public class UsuarioController implements Serializable {
     private Usuario current;
     private DataModel items = null;
     @EJB
-    private controller.UsuarioFacade ejbFacade;
+    private facade.UsuarioFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
+    
     public UsuarioController() {
     }
-
+    
     public Usuario getSelected() {
         if (current == null) {
             current = new Usuario();
@@ -82,8 +87,9 @@ public class UsuarioController implements Serializable {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsuarioCreated"));
-            return prepareView();
+            //return prepareView();
             //return prepareCreate();
+            return "/faces/Login.xhtml";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;

@@ -1,5 +1,6 @@
 package controller;
 
+import facade.SeguindoFacade;
 import model.Seguindo;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
@@ -24,7 +25,7 @@ public class SeguindoController implements Serializable {
     private Seguindo current;
     private DataModel items = null;
     @EJB
-    private controller.SeguindoFacade ejbFacade;
+    private facade.SeguindoFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

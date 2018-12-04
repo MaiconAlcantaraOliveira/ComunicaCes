@@ -1,5 +1,6 @@
 package controller;
 
+import facade.ComentarioFacade;
 import model.Comentario;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
@@ -24,7 +25,7 @@ public class ComentarioController implements Serializable {
     private Comentario current;
     private DataModel items = null;
     @EJB
-    private controller.ComentarioFacade ejbFacade;
+    private facade.ComentarioFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

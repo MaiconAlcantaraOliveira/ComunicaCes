@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
     , @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome")
+    , @NamedQuery(name = "Usuario.buscaPorCredenciais", query = "SELECT u FROM Usuario u where u.nome = :nome and u.senha = :senha")
     , @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")})
 public class Usuario implements Serializable {
 
@@ -147,5 +148,9 @@ public class Usuario implements Serializable {
     public String toString() {
         return "model.Usuario[ id=" + id + " ]";
     }
-    
+
+    public void setUsuario(Class<? extends Usuario> aClass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
